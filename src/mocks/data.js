@@ -1,5 +1,3 @@
-import { gql, ApolloServer } from 'apollo-server'
-
 const characterList =[
   {
     id: 1,
@@ -54,61 +52,4 @@ const characterList =[
   }
 ]
 
-/**
- * METADATA
- * First: We define our data
- * Second: We have to say where comes from or where it resolves
- */
-
-// We have the data definitions
-const typeDefs = gql`
-  # Data Description
-  type Vote {
-    positive: Int!
-    negative: Int!
-  }
-  
-  type Character {
-    id: ID!
-    name: String!
-    nickname: String!
-    description: String!
-    category: String!
-    picture: String!
-    lastUpdated: String!
-    country: String
-    votes: Vote
-  }
-
-  # Query Description
-  type Query {
-    personCount: Int!
-    CharactersQuery: [Character]!
-    findCharacter(name: String!): Character
-  }
-
-`
-
-// we have to specify where the data come from
-const resolvers = {
-  // special query resolver
-  Query: {
-    personCount: () => characterList.length,
-    CharactersQuery: () => characterList,
-    findCharacter: (_, args) => {
-      const { name } = args
-      return characterList.find(person => person.name.toLowerCase() === name.toLowerCase())
-    }
-  },
-
-  Character: {
-    nickname: (root) => root.name.split(' ')[0]
-  }
-}
-
-const server = new ApolloServer({
-  typeDefs,
-  resolvers
-})
-
-server.listen().then(({ url }) => console.log(`Server ready at ${url}`))
+export { characterList }
