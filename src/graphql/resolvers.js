@@ -12,9 +12,28 @@ const resolvers = {
     }
   },
 
+  Mutation: {
+    VoteMutation: (_, args) => {
+      const { id, vote } = args
+      const found = characterList.find(person => person.id === id)
+
+      if (!found) return null
+
+      if (vote) found.votes.positive++
+      else found.votes.negative++
+
+      return true
+    }
+  },
+
   Character: {
     nickname: (root) => root.name.split(' ')[0]
+  },
+
+  SuccessResponse: {
+    success: (root) => !!root
   }
+
 }
 
 export { resolvers }

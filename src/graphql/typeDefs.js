@@ -9,7 +9,7 @@ const typeDefs = gql`
   }
   
   type Character {
-    id: ID!
+    id: Int!
     name: String!
     nickname: String!
     description: String!
@@ -20,11 +20,22 @@ const typeDefs = gql`
     votes: Vote
   }
 
+  type SuccessResponse {
+    success: Boolean!
+  }
+
   # Query Description
   type Query {
     personCount: Int!
     CharactersQuery: [Character]!
     findCharacter(name: String!): Character
+  }
+
+  type Mutation {
+    VoteMutation(
+      id: Int!
+      vote: Boolean!
+    ): SuccessResponse
   }
 
 `
