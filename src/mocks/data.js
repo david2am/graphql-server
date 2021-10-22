@@ -1,3 +1,8 @@
+// import kanye from '../assets/kanye.png'
+// import mark from '../assets/mark.png'
+// import cristina from '../assets/cristina.png'
+// import malala from '../assets/malala.png'
+
 const characterList =[
   {
     id: 1,

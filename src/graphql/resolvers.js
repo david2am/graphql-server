@@ -5,7 +5,7 @@ const resolvers = {
   // special query resolver
   Query: {
     personCount: () => characterList.length,
-    CharactersQuery: () => characterList,
+    allCharacters: () => characterList,
     findCharacter: (_, args) => {
       const { name } = args
       return characterList.find(person => person.name.toLowerCase() === name.toLowerCase())
@@ -13,7 +13,7 @@ const resolvers = {
   },
 
   Mutation: {
-    VoteMutation: (_, args) => {
+    addVotation: (_, args) => {
       const { id, vote } = args
       const found = characterList.find(person => person.id === id)
 

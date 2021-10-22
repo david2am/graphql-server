@@ -27,12 +27,12 @@ const typeDefs = gql`
   # Query Description
   type Query {
     personCount: Int!
-    CharactersQuery: [Character]!
+    allCharacters: [Character]!
     findCharacter(name: String!): Character
   }
 
   type Mutation {
-    VoteMutation(
+    addVotation(
       id: Int!
       vote: Boolean!
     ): SuccessResponse
