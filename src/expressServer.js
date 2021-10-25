@@ -10,7 +10,7 @@ function staticProvider () {
 
   app.use('/images', express.static(__dirname + '/assets'))
 
-  app.listen(PORT, () => console.log(`Static file server running at ${PORT}`))
+  app.listen(PORT, () => console.log(`🚀 Statics server ready at http://localhost:${PORT}/`))
 }
 
 export { staticProvider }

@@ -10,4 +10,4 @@ const server = new ApolloServer({
   resolvers
 })
 
-server.listen().then(({ url }) => console.log(`Data server ready at ${url}`))
+server.listen().then(({ url }) => console.log(`🚀 Data server ready at ${url}`))
